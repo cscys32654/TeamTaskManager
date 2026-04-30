@@ -1,12 +1,12 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { AuthProvider, useAuth } from './context/AuthContext';
-import Login from './pages/Login';
-import Register from './pages/Register';
-import Dashboard from './pages/Dashboard';
-import Projects from './pages/Projects';
-import Board from './pages/Board';
-import Layout from './components/Layout';
+import Login from './pages/Login.jsx';
+import Register from './pages/Register.jsx';
+import Dashboard from './pages/Dashboard.jsx';
+import Projects from './pages/Projects.jsx';
+import Board from './pages/Board.jsx';
+import Layout from './components/Layout.jsx';
 
 const PrivateRoute = ({ children }) => {
   const { user, loading } = useAuth();
