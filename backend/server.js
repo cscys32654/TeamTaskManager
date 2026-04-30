@@ -1,20 +1,37 @@
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import express from 'express';
+import cors from 'cors';
+
+import authRoutes from './src/routes/authroutes.js';
+import projectRoutes from './src/routes/projectroutes.js';
+import taskRoutes from './src/routes/taskroutes.js';
+import dashboardRoutes from './src/routes/dashboardroutes.js';
 
 dotenv.config();
 
-// Connect to MongoDB
-mongoose.connect(process.env.MONGO_URI)
-.then(() => console.log("Database connected"))
-.catch((err) => console.log("DB Error:", err));
-
 const app = express();
+
+app.use(cors({
+  origin: "http://localhost:5173",
+  credentials: true
+}));
+
+app.use(express.json());
+
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => console.log("Database connected"))
+  .catch((err) => console.log("DB Error:", err));
+
+app.use('/api/auth', authRoutes);
+app.use('/api/projects', projectRoutes);
+app.use('/api/dashboard', dashboardRoutes);
+app.use('/api/projects/:projectId/tasks', taskRoutes);
 
 app.get('/', (req, res) => {
   res.send("Server is running");
 });
 
-app.listen(process.env.PORT, () => {
-  console.log(`Server running on port ${process.env.PORT}`);
+app.listen(5000, () => {
+  console.log("Server running on port 5000");
 });

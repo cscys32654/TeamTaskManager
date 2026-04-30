@@ -1,12 +1,14 @@
 import { Router } from 'express';
 import { protect } from '../middleware/auth.js';
 import { requireRole } from '../middleware/rbac.js';
+
 import {
   createProject, getProjects, getProjectById,
   updateProject, deleteProject, addMember, removeMember
-} from '../controllers/project.controller.js';
+} from '../controller/projectcontroller.js';
 
 const router = Router();
+
 router.use(protect);
 
 router.route('/')

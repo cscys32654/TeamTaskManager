@@ -1,12 +1,18 @@
 import { Router } from 'express';
 import { protect } from '../middleware/auth.js';
 import { requireRole } from '../middleware/rbac.js';
+
 import {
-  createTask, getTasksByProject, getTaskById,
-  updateTask, deleteTask, updateTaskStatus
-} from '../controllers/task.controller.js';
+  createTask,
+  getTasksByProject,
+  getTaskById,
+  updateTask,
+  deleteTask,
+  updateTaskStatus
+} from '../controller/taskcontroller.js';
 
 const router = Router({ mergeParams: true });
+
 router.use(protect);
 
 router.route('/')
