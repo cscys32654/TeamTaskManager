@@ -28,8 +28,8 @@ app.use('/api/projects', projectRoutes);
 app.use('/api/dashboard', dashboardRoutes);
 app.use('/api/projects/:projectId/tasks', taskRoutes);
 
-app.get('/', (req, res) => {
-  res.send("Server is running");
+app.get('/api', (req, res) => {
+  res.send("API is running");
 });
 
 const PORT = process.env.PORT || 5000;
