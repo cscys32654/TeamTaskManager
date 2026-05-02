@@ -26,32 +26,100 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50">
-      <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-8 w-full max-w-md">
-        <h2 className="text-2xl font-bold mb-1">Welcome back</h2>
-        <p className="text-gray-500 text-sm mb-6">Sign in to your account</p>
-        <form onSubmit={handleSubmit} className="space-y-4">
+    <div style={{
+      minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center',
+      background: '#0F172A', padding: '24px',
+      fontFamily: "'DM Sans', system-ui, sans-serif",
+      position: 'relative', overflow: 'hidden',
+    }}>
+      <div style={{ position: 'absolute', top: '-120px', right: '-120px', width: '450px', height: '450px', borderRadius: '50%', background: 'rgba(99,102,241,0.12)', filter: 'blur(80px)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', bottom: '-80px', left: '-80px', width: '350px', height: '350px', borderRadius: '50%', background: 'rgba(124,58,237,0.08)', filter: 'blur(80px)', pointerEvents: 'none' }} />
+
+      <div style={{
+        position: 'relative', zIndex: 1,
+        width: '100%', maxWidth: '420px',
+        background: '#1E293B',
+        border: '1px solid rgba(148,163,184,0.1)',
+        borderRadius: '20px', padding: '40px',
+      }}>
+        <div style={{ textAlign: 'center', marginBottom: '32px' }}>
+          <div style={{
+            fontFamily: "'Syne', 'DM Sans', sans-serif",
+            fontWeight: 800, fontSize: '28px',
+            background: 'linear-gradient(135deg, #818CF8, #C084FC)',
+            WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
+            marginBottom: '8px',
+          }}>ProjectFlow</div>
+          <p style={{ color: '#475569', fontSize: '14px' }}>Sign in to your account</p>
+        </div>
+
+        <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
           <div>
-            <label className="block text-sm font-medium mb-1">Email</label>
-            <input type="email" required value={form.email}
+            <label style={{ display: 'block', fontSize: '11px', fontWeight: 600, color: '#475569', marginBottom: '6px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+              Email Address
+            </label>
+            <input
+              type="email" required value={form.email}
               onChange={e => setForm(p => ({ ...p, email: e.target.value }))}
-              className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-              placeholder="you@example.com" />
+              placeholder="you@example.com"
+              style={{
+                width: '100%', background: '#0F172A',
+                border: '1px solid rgba(148,163,184,0.12)',
+                borderRadius: '10px', padding: '11px 14px',
+                color: '#E2E8F0', fontFamily: 'inherit', fontSize: '14px',
+                outline: 'none', boxSizing: 'border-box',
+              }}
+              onFocus={e => e.target.style.borderColor = 'rgba(99,102,241,0.6)'}
+              onBlur={e => e.target.style.borderColor = 'rgba(148,163,184,0.12)'}
+            />
           </div>
+
           <div>
-            <label className="block text-sm font-medium mb-1">Password</label>
-            <input type="password" required value={form.password}
+            <label style={{ display: 'block', fontSize: '11px', fontWeight: 600, color: '#475569', marginBottom: '6px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+              Password
+            </label>
+            <input
+              type="password" required value={form.password}
               onChange={e => setForm(p => ({ ...p, password: e.target.value }))}
-              className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-              placeholder="••••••••" />
+              placeholder="••••••••"
+              style={{
+                width: '100%', background: '#0F172A',
+                border: '1px solid rgba(148,163,184,0.12)',
+                borderRadius: '10px', padding: '11px 14px',
+                color: '#E2E8F0', fontFamily: 'inherit', fontSize: '14px',
+                outline: 'none', boxSizing: 'border-box',
+              }}
+              onFocus={e => e.target.style.borderColor = 'rgba(99,102,241,0.6)'}
+              onBlur={e => e.target.style.borderColor = 'rgba(148,163,184,0.12)'}
+            />
           </div>
-          <button type="submit" disabled={loading}
-            className="w-full bg-primary hover:bg-primary-hover text-white rounded-lg py-2.5 text-sm font-medium transition-colors disabled:opacity-60">
-            {loading ? 'Signing in…' : 'Sign in'}
+
+          <button
+            type="submit" disabled={loading}
+            style={{
+              width: '100%', padding: '12px',
+              background: 'linear-gradient(135deg, #4F46E5, #7C3AED)',
+              border: 'none', borderRadius: '10px', color: 'white',
+              fontFamily: 'inherit', fontSize: '14px', fontWeight: 600,
+              cursor: loading ? 'not-allowed' : 'pointer',
+              opacity: loading ? 0.6 : 1, marginTop: '4px',
+            }}
+          >
+            {loading ? 'Signing in…' : 'Sign In →'}
           </button>
         </form>
-        <p className="text-center text-sm text-gray-500 mt-6">
-          No account? <Link to="/register" className="text-primary font-medium">Register</Link>
+
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', margin: '20px 0', color: '#334155', fontSize: '12px' }}>
+          <div style={{ flex: 1, height: '1px', background: 'rgba(148,163,184,0.1)' }} />
+          or
+          <div style={{ flex: 1, height: '1px', background: 'rgba(148,163,184,0.1)' }} />
+        </div>
+
+        <p style={{ textAlign: 'center', fontSize: '13px', color: '#475569' }}>
+          No account?{' '}
+          <Link to="/register" style={{ color: '#818CF8', fontWeight: 600, textDecoration: 'none' }}>
+            Create one
+          </Link>
         </p>
       </div>
     </div>

@@ -1,3 +1,26 @@
+
+/* ── Add this at the very TOP of your existing src/index.css ──
+   (keep everything else in index.css as-is, just paste this above it)  */
+
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap');
+
+/* Fix dark date picker on Chrome */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.5);
+}
+
+/* Fix select arrow on dark backgrounds */
+select option {
+  background: #1E293B;
+  color: #E2E8F0;
+}
+
+/* Smooth scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(148,163,184,0.18); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(148,163,184,0.3); }
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
